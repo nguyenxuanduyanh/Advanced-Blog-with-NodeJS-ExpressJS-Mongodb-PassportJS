@@ -1,0 +1,39 @@
+<% layout('../layout_default') %>
+    <header class="masthead" style="background-image: url('/img/post-bg.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="page-heading">
+                        <h1>CONTACT</h1>
+                        <span class="subheading">Now, I'm living in Ha Noi, Viet Nam. To be more specific, you can find me on the map bellow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <h1>My address is here:</h1>
+    <div id="map"></div>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = {
+                lat: 20.9837,
+                lng: 105.8636
+            };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {
+                    zoom: 4,
+                    center: uluru
+                });
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb3gLNghca_NWV5BzmYdRHv23y-Aycj3M&callback=initMap">
+    </script>

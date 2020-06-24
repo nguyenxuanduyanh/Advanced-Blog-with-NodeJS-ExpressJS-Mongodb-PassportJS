@@ -1,0 +1,63 @@
+<% layout('../layout_default') %>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>Coder's Blog</h1>
+
+                        <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <% blogs.forEach(function(blog) { %>
+                    <div class="post-preview">
+                        <a href="/<%= blog.id %>">
+                            <h2 class="post-title">
+                                <%= blog.title %>
+                            </h2>
+                            <h3 class="post-subtitle">
+                                <%= blog.description %>
+                            </h3>
+                        </a>
+                        <p class="post-meta">Posted by
+                            <a href="#">
+                                <%= blog.author %>
+                            </a>
+                            <%= blog.createdAt %>
+                        </p>
+                        <% }); %>
+
+                            <hr>
+                            <!-- Pager -->
+                            <div id="wrapper" class="row" style="justify-content: space-between;">
+                                <% if ((currentPage < totalPages )&&(currentPage>1)) { %>
+                                    <div id="previousbtn" class=" clearfix">
+                                        <a class=" btn btn-primary " href="/home/?page=<%= parseInt(currentPage) - 1 %>">Previous Posts &rarr;</a>
+                                    </div>
+                                    <div id="latterbtn " class=" clearfix ">
+                                        <a class="btn btn-primary " href="/home/?page=<%= parseInt(currentPage) + 1 %>">Latter Posts &rarr;</a>
+                                    </div>
+                            </div>
+                            <% } else if (currentPage == 1) { %>
+
+                                <div id="latterbtn " class=" clearfix ">
+                                    <a class="btn btn-primary " href="/home/?page=<%=parseInt(currentPage) + 1 %>">Latter Posts &rarr;</a>
+                                </div>
+                                <% } else if (currentPage == totalPages) { %>
+                                    <div id="previousbtn" class=" clearfix">
+                                        <a class=" btn btn-primary " href="/home/?page=<%= parseInt(currentPage) - 1 %>">Previous Posts &rarr;</a>
+                                    </div>
+                                    <% } %>
+                    </div>
+            </div>
+        </div>
