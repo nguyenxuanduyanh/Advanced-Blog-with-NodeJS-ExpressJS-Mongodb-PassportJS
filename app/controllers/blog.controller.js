@@ -51,7 +51,7 @@ module.exports.postcreate = (req, res) => {
     blog.save()
 
 
-    res.redirect("/home")
+    res.redirect("/")
 }
 module.exports.address = (req, res) => {
     res.render("pages/address")

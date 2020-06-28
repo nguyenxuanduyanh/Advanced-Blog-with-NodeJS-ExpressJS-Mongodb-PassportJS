@@ -5,12 +5,12 @@ module.exports = function(app, passport) {
 
     app.get('/auth/signin', blogController.signin)
     app.post('/auth/signin', passport.authenticate('local-login', {
-        successRedirect: '/home',
+        successRedirect: '/',
         failureRedirect: '/auth/signin',
         failureFlash: true
     }));
 
-    app.get('/home', blogController.home);
+    app.get('/', blogController.home);
     app.get('/about', blogController.about);
     app.get('/address', blogController.address);
 
