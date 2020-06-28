@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser')
     // create application/x-www-form-urlencoded parser
-const Blog = require("../models/blog.model")
+const Blog = require("../models/blog.model");
+
 
 module.exports.home = async(req, res) => {
     const page = req.query.page || 1;
@@ -31,10 +32,8 @@ module.exports.about = (req, res) => {
 }
 
 
-
 module.exports.create = (req, res) => {
     res.render("pages/createpost")
-
 }
 
 module.exports.postcreate = (req, res) => {
@@ -57,4 +56,8 @@ module.exports.postcreate = (req, res) => {
 module.exports.address = (req, res) => {
     res.render("pages/address")
 
+}
+
+module.exports.signin = (req, res) => {
+    res.render('pages/signin')
 }

@@ -1,26 +1,34 @@
-const express = require('express');
-const router = express.Router();
 const blogController = require('../controllers/blog.controller');
-// Old code here
-/*
-router.get("/home", blogController.home)
-router.get("/about", blogController.about)
-router.get("/createpost", blogController.create)
-router.post("/createpost", blogController.postcreate)
-router.get("/:id", blogController.viewblog)
-router.get("/", blogController.address)
-*/
 
-// New code
-router.get('/home', blogController.home);
-router.get('/about', blogController.about);
-router.get('/address', blogController.address);
+module.exports = function(app, passport) {
 
-router
-    .route('/createpost')
-    .get(blogController.create)
-    .post(blogController.postcreate);
 
-router.route('/:id').get(blogController.viewblog);
+    app.get('/auth/signin', blogController.signin)
+    app.post('/auth/signin', passport.authenticate('local-login', {
+        successRedirect: '/home',
+        failureRedirect: '/auth/signin',
+        failureFlash: true
+    }));
 
-module.exports = router;
+    app.get('/home', blogController.home);
+    app.get('/about', blogController.about);
+    app.get('/address', blogController.address);
+
+    app.get('/createpost', isLoggedIn, blogController.create)
+    app.post('/createpost', blogController.postcreate);
+
+    app.get('/:id', blogController.viewblog);
+
+    function isLoggedIn(req, res, next) {
+
+        // if user is authenticated in the session, carry on 
+        if (req.isAuthenticated()) {
+            console.log(req.isAuthenticated())
+            return next();
+        } else {
+            // if they aren't redirect them to the home page
+            console.log(req.isAuthenticated())
+            res.redirect('/auth/signin');
+        }
+    }
+}
