@@ -51,11 +51,11 @@
                             <% } else if (currentPage == 1) { %>
 
                                 <div id="latterbtn " class=" clearfix ">
-                                    <a class="btn btn-primary " href="/home/?page=<%=parseInt(currentPage) + 1 %>">Latter Posts &rarr;</a>
+                                    <a class="btn btn-primary " href="/?page=<%=parseInt(currentPage) + 1 %>">Latter Posts &rarr;</a>
                                 </div>
                                 <% } else if (currentPage == totalPages) { %>
                                     <div id="previousbtn" class=" clearfix">
-                                        <a class=" btn btn-primary " href="/home/?page=<%= parseInt(currentPage) - 1 %>">Previous Posts &rarr;</a>
+                                        <a class=" btn btn-primary " href="/?page=<%= parseInt(currentPage) - 1 %>">Previous Posts &rarr;</a>
                                     </div>
                                     <% } %>
                     </div>
